@@ -10,7 +10,7 @@ require 'faker'
 
 
 
-
+Library.delete_all
 10.times do 
     lib = Library.new(
         title: Faker::TvShows::StrangerThings.character,

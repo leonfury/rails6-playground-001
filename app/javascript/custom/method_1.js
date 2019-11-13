@@ -22,11 +22,17 @@ window.viewlib = function viewlib(id) {
         dataType: "JSON",
         success: function(result){
             console.log(result);
-            alert(`Title Description: ${result['desc']}`);
+            alert(`Title Description: ${result['desc']['body']}`);
+            what();
         },
         error: function(error){
             console.log(error);
             alert('Uh oh! Something went wrong! Please try again.');
         }
     });
+}
+
+function what() { // calls from within app JS works
+    console.log('what triggered');
+    alert('what?');
 }
