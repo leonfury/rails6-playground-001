@@ -5,11 +5,22 @@ class LibrariesController < ApplicationController
     # GET /libraries.json
     def index
         @libraries = Library.all
+
+        if params[:search] != nil
+            search = params[:search].downcase
+            @libraries = @libraries.where('lower(title) LIKE ?', "%#{search}%")
+        end
+
     end
 
     # GET /libraries/1
     # GET /libraries/1.json
     def show
+    end
+
+    def viewlib
+        description = Library.find(params[:id]).description
+        render json: {"desc": description}
     end
 
     # GET /libraries/new
